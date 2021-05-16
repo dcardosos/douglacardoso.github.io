@@ -18,16 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Meu blog
+title: Omikron Science
 email: douglascardoso@usp.br
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This personal blog is intended for notes and demonstrations of my studies
+  and projects in, mainly, data science and machine learning. I hope you like it ʕ•ᴥ•ʔ.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://douglacardoso.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: duglaiz
+github_username:  douglacardoso
 
 # Build settings
 theme: minima
