@@ -1,7 +1,12 @@
-# Data Cleaning annotations - Kaggle/Data Camp
+---
+layout: post
+title:  "Data Cleaning"
+author: "Douglas Cardoso"
+date:   2021-05-16 00:00:00
+---
 
-# Handling missing values
-## How many data points do we  have?
+## Handling missing values
+# How many data points do we  have?
 
 ```python
 import pandas as pd
