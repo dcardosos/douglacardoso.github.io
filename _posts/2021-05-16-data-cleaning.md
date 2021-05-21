@@ -42,6 +42,10 @@ df.shape[1] - df.dropna(axis=1).shape[1]
 
 If you remove that rows or columns, you obvisly lose quite a bit of data. You have to do an analysis of the significance of losts.
 
+## Filter out a specific column without NaN
+```python
+df.loc[df.specific_column.notnull()]
+```
 ## Filling missing values
 
 ```python 
@@ -136,4 +140,38 @@ df['date_parsed'].dt.year
 ```
 
 # Character Encodings
-... Are specific sets of rules for mapping from raw binary byte strings to charactes that make up human-readable text (010001011001010 to "hello"). The main character encoding that we need is UTF-8
+... Are specific sets of rules for mapping from raw binary byte strings to charactes that make up human-readable text (010001011001010 to "hello"). The main character encoding that we need is UTF-8.
+> UTF-8 is the standard text encoding. All Python code is in UTF-8 and, ideally, all your data should be as well. It's when things aren't in UTF-8 that you run into trouble.
+
+```python
+before = "This is my string"
+after = before.encode('utf-8', errors='replace')
+
+print(f"Text: {before}, type={type(before)} \n Text encoded: {after}, type={type(after)}")
+
+# decode
+print(after.decode('utf8'))
+```
+ Sometimes, we can get a issues when importing a csv file, for example, in default format of `pd.read_csv`, because the file isn't UTF-8. In this cases, we normally get a `UnicodeDecodeError`, like this:
+
+ ```python
+ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x99 in position 11: invalid start byte
+ ```
+ For resolve this, we could figure out what is encoding:
+
+ ```python
+import chardet
+
+# look at the first ten thousand bytes to guess the character encoding
+with open("file_path_name", 'rb') as rawdata:
+    result = chardet.detect(rawdata.read(10000))
+
+# check what the character encoding might be
+print(result)
+ ``` 
+
+With the known encoding, we can specify the `encoding=` argument in `pd.read_csv`:
+
+```python
+df = pd.read_csv('data.csv', encoding='known_encoding')
+```
